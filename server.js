@@ -1,8 +1,13 @@
 import http from 'http'
 
 const server = http.createServer((request, response) => {
-    response.writeHead(200, {'Content.type': 'text/plain'})
-    response.end('Hello world')
+    if (request.url === '/headers') {
+        response.writeHead(200, { 'ContentType': 'application/json' })
+        response.end(JSON.stringify(request.headers))
+    }else{
+        response.writeHead(404, 'Not Found')
+        response.end()
+    }
 })
 
 const port = 3000
