@@ -1,6 +1,10 @@
 {
   "name": "httpserver",
   "type": "module",
+  "jest": {
+    "verbose": true
+  },
+  "transform": {},
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
