@@ -1,6 +1,7 @@
 import http from 'http'
 import url from 'url'
 import { pluralize } from './pluralize.js'
+import { mapWords, countWords, separateWords } from './wordFrequency.js'
 
 
 const server = http.createServer((request, response) => {
@@ -28,10 +29,18 @@ const server = http.createServer((request, response) => {
                 body += chunk
             })
             request.on('end', () => {
+
                 console.log('body', body);
+
+                let words = mapWords(separateWords(body))
+                console.log(words);
+
+                response.setHeader('Most-frequent-words', countWords(words).frequentWords)
+                response.setHeader('Quantity-of-unique-words', countWords(words).uniqueWords)
+
+                response.writeHead(200, { 'Content-Type': 'application/json' })
+                response.end('post received')
             })
-            response.writeHead(200, {'Content-Type': 'application/json'})
-            response.end('post received')
 
         } else {
             response.writeHead(404, 'Not Found')
