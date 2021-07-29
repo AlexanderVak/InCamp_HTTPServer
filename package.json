@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/AlexanderVak/InCamp_HTTPServer/issues"
   },
-  "homepage": "https://github.com/AlexanderVak/InCamp_HTTPServer#readme"
+  "homepage": "https://github.com/AlexanderVak/InCamp_HTTPServer#readme",
+  "devDependencies": {
+    "jest": "^27.0.6"
+  }
 }
